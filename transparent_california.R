@@ -209,5 +209,12 @@ rm(list = ls())
   
   ca_map <- get_map(location = "California", zoom = 8, scale = 2)
   ggmap(ca_map)
+
+#makes Maps
+cabox <- make_bbox(lon = all_together$Longitude, lat = all_together$Latitude, f = .1)
+
+ca_map <- get_map(location = cabox, maptype = "roadmap", source = "google")
+
+ggmap(ca_map) + geom_point(data = all_together, mapping = aes(x = Longitude, y = Latitude), color = "red")
   
   
